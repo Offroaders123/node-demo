@@ -7,14 +7,18 @@ ESM and JSDoc type checking is a really nice place to start for writing solid co
 It makes it very simple to move to full on TypeScript down the line as well, because it's only a matter of renaming your file extensions to `.ts`, then using IDE refactoring to "Annotate everything with types from JSDoc". I think converting untyped projects to TypeScript is really easy with this method too, because you don't have to change the build step in order to get type checking working.
 
 You can check out the video itself on YouTube.
-https://www.youtube.com/watch?v=dNkKRMlvC6U
+
+[![Watch the video](https://img.youtube.com/vi/dNkKRMlvC6U/maxresdefault.jpg)](https://youtu.be/dNkKRMlvC6U)
 
 I used a few other tools to get this working. `ffmpeg` is one of my favorite tools now for sure!
 
-https://www.reddit.com/r/ffmpeg/comments/1bcfru6/speeding_up_a_video_by_5x_by_dropping_frames_and/
-https://superuser.com/questions/1261678/how-do-i-speed-up-a-video-by-60x-in-ffmpeg
-https://stackoverflow.com/questions/55233465/ffmpeg-speed-up-video-for-time-lapse-quicker-faster
-https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg
+[Reddit - Speeding up a video by 5x by dropping frames and maintaining framerate?](https://www.reddit.com/r/ffmpeg/comments/1bcfru6/speeding_up_a_video_by_5x_by_dropping_frames_and/)
+
+[Super User - How do I speed up a video by 60X in ffmpeg?](https://superuser.com/questions/1261678/how-do-i-speed-up-a-video-by-60x-in-ffmpeg)
+
+[Stack Overflow - FFMPEG - Speed up video for time lapse - quicker/faster?](https://stackoverflow.com/questions/55233465/ffmpeg-speed-up-video-for-time-lapse-quicker-faster)
+
+[Super User - How to merge audio and video file in ffmpeg](https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg)
 
 I just recorded the video with macOS's screen recorder Screenshot tool, which saves as `.mov` by default. Since the file sizes for those seem to be much bigger (200 MB??), reencoding to `.mp4` really helps slim things down a bit.
 
@@ -26,10 +30,16 @@ I added the no audio flag just in case it had anything saved there. I don't thin
 ffmpeg -i ./node-testing.mov -filter:v "setpts=PTS/2" -an ./node-testing.mp4
 ```
 
-Then I realized I should probably add some music to it as well, so I used one of my own songs, "Jack.".
+Then I realized I should probably add some music to it as well, so I used one of my own songs, [Jack.](https://rbnaodn.bandcamp.com/track/jack).
 
 It simply reencodes the `.wav` song file as AAC, and embeds that into the file too. I made sure to copy the original video stream as-is, since reencoding it again to `.mp4` doesn't help with anything. It's already in the appropriate format it needs to be! Extra cool. This new file is only 26 MB, barely anything to add music!
 
 ```sh
 ffmpeg -i ./node-testing.mp4 -i "./06 Jack..wav" -c:v copy -c:a aac ./node-testing-yt.mp4
 ```
+
+Oh and while adding the links to this page, I looked into how to embded the YouTube video nicely like that. Is there a way to get a full YouTube player too, actually? Maybe just an `<iframe>` huh? Not sure if GitHub will allow for rendering that though.
+
+[Stack Overflow - How can I embed a YouTube video on GitHub wiki pages?](https://stackoverflow.com/questions/11804820/how-can-i-embed-a-youtube-video-on-github-wiki-pages)
+
+[Ardalis - How to Embed a YouTube Video in GitHub ReadMe Markdown](https://ardalis.com/how-to-embed-youtube-video-in-github-readme-markdown/)
