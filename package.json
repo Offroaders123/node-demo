@@ -1,0 +1,8 @@
+{
+  "name": "node-demo",
+  "type": "module",
+  "main": "./src/index.js",
+  "devDependencies": {
+    "@types/node": "^20.12.7"
+  }
+}

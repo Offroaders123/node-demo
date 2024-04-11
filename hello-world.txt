@@ -1,0 +1,7 @@
+hello world!
+
+this is some random text content.
+
+🦖 🚀
+
+this changed (it doesn't detect non-JS file changes though)
